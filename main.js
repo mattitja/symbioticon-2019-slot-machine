@@ -6,25 +6,35 @@ const REEL_RADIUS = 100;
 
 // excel data import
 var data = [
-    ['Wissenskultur', 'konn.png', 'Open Science', 'Informationsdesign', 'Bildungsbusiness', 'Massive Open Online Course', 'Gamification', 'Predictive Analytics', 'Talentismus', 'Open Innovation', 'Kollaboration', 'Sharing Economy', 'Female Shift', 'Life-Long-Learning', 'Tutorial Learning', 'Creativiteens', 'Neugiermanagement', ],
-    ['Konnektivität', 'konn.png', 'Augmented Reality', 'E-Commerce', 'Crowd Funding', 'FinTech', 'Industrie 4.0', 'Big Data', 'Cybercrime', 'Privacy', 'Predictive Analytics', 'Selftracking', 'E-Health', 'Me-Cloud', 'Open Innovation', 'Pop-up Money', 'Swapping', 'Smart Devices', 'Internet der Dinge', 'Social Networks', ],
-    ['Urbanisierung', 'konn.png', 'Bevölkerungswachstum', 'Third Places', 'Collaborative Living', 'Urban Manufacturing', 'Urban Mining', 'Urban Farming', 'E-Mobility', 'Bike Boom', 'Megacities', 'Global Cities', 'Landflucht', 'Schrumpfende Städte', 'Smart Cities', ],
-    ['Neo-Ökologie', 'konn.png', 'Nachhaltigkeitsgesellschaft', 'Post-Carbon-Gesellschaft', 'Bio-Boom', 'Gutbürger', 'Slow Culture', 'Maker Movement', 'Sharing Economy', 'Postwachstumsökonomie', 'Social Business', 'Fair Trade', 'Swapping', 'Zero Waste', 'Green Tech', 'Urban Farming', 'E-Mobility', 'Circular Economy', ],
-    ['Globalisierung', 'konn.png', 'Glokalisierung', 'Multipolare Weltordnung', 'Cybercrime', 'On-demand Business', 'Near-shoring', 'Schattenökonomie', 'Pop-up Money', 'Fair Trade', 'Social Business', 'Postwachstumsökonomie', 'Womanomics', 'Rising Africa', 'Weltmacht China', 'Global Cities', 'Migration', ],
-    ['Individualisierung', 'konn.png', 'Single-Gesellschaft', 'Lebensqualität', 'Selftracking', 'Identitätsmanagement', 'Me-Cloud', 'Small-World-Networks', 'Maker Movement', 'Diversity', 'Liquid Youth', 'Multigrafie', 'Tutorial Learning', 'Regenbogenfamilien', 'Wir-Kultur', ],
-    ['Gesundheit', 'konn.png', 'Sportivity', 'Detoxing', 'Komplementärmedizin', 'Lebensqualität', 'Selftracking', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Work-Life-Blending', 'Corporate Health', 'Healthness', 'Foodies', 'Lebensenergie', 'Achtsamkeit', ],
-    ['New Work', 'konn.png', 'Work-Design', 'Outsourcing-Gesellschaft', 'Start-up-Culture', 'Slash-Slash-Biografien', 'Permanent Beta', 'Silver Potentials', 'Corporate Health', 'Work-Life Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Co-Working', 'Service-Ökonomie', 'Social Business', 'Kollaboration', 'Open Innovation', 'Talentismus', 'On-demand Business', 'Flexicurity', 'Antifragilität', 'Urban Manufacturing', 'Power of Place', 'Kreativökonomie', ],
-    ['Gender Shift', 'konn.png', 'Super Daddys', 'Alpha Softies', 'Sexdesign', 'Proll-Professionals', 'Work-Life-Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Tiger Woman', 'Regenbogenfamilien', 'Neue Mütter', 'Phasenfamilien', ],
-    ['Silver Society', 'konn.png', 'Downaging', 'Ageless Consuming', 'Forever Youngsters', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Diversity', 'Liquid Youth', 'Silver Potentials', 'Healthness', 'Universal Design', ],
-    ['Mobilität', 'konn.png', '24/7 Gesellschaft', 'Carsharing', 'Autonomes Fahren', 'Third Places', 'Power of Place', 'Wearables', 'Langsamverkehr', 'E-Mobility', 'Bike-Boom', 'Unterwegsmärkte', 'Mobile Commerce', 'Mixed Mobility', 'End-to-End-Tourismus', ],
-    ['Sicherheit', 'konn.png', 'Super-Safe-Society', 'Trust Technology', 'Transparenz-Märkte', 'E-Health', 'Identitätsmanagement', 'Digital Reputation', 'Predictive Analytics', 'Privacy', 'Cybercrime', 'Big Data', 'Industrie 4.0', 'Flexicurity', 'Antifragilität', 'Simplexity', ],
+    ['Wissenskultur', 'Wissenskultur.svg', 'w', 'Open Science', 'Informationsdesign', 'Bildungsbusiness', 'Massive Open Online Course', 'Gamification', 'Predictive Analytics', 'Talentismus', 'Open Innovation', 'Kollaboration', 'Sharing Economy', 'Female Shift', 'Life-Long-Learning', 'Tutorial Learning', 'Creativiteens', 'Neugiermanagement', ],
+    ['Konnektivität', 'Konnektivität.svg', 'k', 'Augmented Reality', 'E-Commerce', 'Crowd Funding', 'FinTech', 'Industrie 4.0', 'Big Data', 'Cybercrime', 'Privacy', 'Predictive Analytics', 'Selftracking', 'E-Health', 'Me-Cloud', 'Open Innovation', 'Pop-up Money', 'Swapping', 'Smart Devices', 'Internet der Dinge', 'Social Networks', ],
+    ['Urbanisierung', 'Urbanisierung.svg', 'u', 'Bevölkerungswachstum', 'Third Places', 'Collaborative Living', 'Urban Manufacturing', 'Urban Mining', 'Urban Farming', 'E-Mobility', 'Bike Boom', 'Megacities', 'Global Cities', 'Landflucht', 'Schrumpfende Städte', 'Smart Cities', ],
+    ['Neo-Ökologie', 'Neo-Ökologie.svg', 'ö', 'Nachhaltigkeitsgesellschaft', 'Post-Carbon-Gesellschaft', 'Bio-Boom', 'Gutbürger', 'Slow Culture', 'Maker Movement', 'Sharing Economy', 'Postwachstumsökonomie', 'Social Business', 'Fair Trade', 'Swapping', 'Zero Waste', 'Green Tech', 'Urban Farming', 'E-Mobility', 'Circular Economy', ],
+    ['Globalisierung', 'Globalisierung.svg', 'q', 'Glokalisierung', 'Multipolare Weltordnung', 'Cybercrime', 'On-demand Business', 'Near-shoring', 'Schattenökonomie', 'Pop-up Money', 'Fair Trade', 'Social Business', 'Postwachstumsökonomie', 'Womanomics', 'Rising Africa', 'Weltmacht China', 'Global Cities', 'Migration', ],
+    ['Individualisierung', 'Individualisierung.svg', 'i', 'Single-Gesellschaft', 'Lebensqualität', 'Selftracking', 'Identitätsmanagement', 'Me-Cloud', 'Small-World-Networks', 'Maker Movement', 'Diversity', 'Liquid Youth', 'Multigrafie', 'Tutorial Learning', 'Regenbogenfamilien', 'Wir-Kultur', ],
+    ['Gesundheit', 'Gesundheit.svg', 'g', 'Sportivity', 'Detoxing', 'Komplementärmedizin', 'Lebensqualität', 'Selftracking', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Work-Life-Blending', 'Corporate Health', 'Healthness', 'Foodies', 'Lebensenergie', 'Achtsamkeit', ],
+    ['New Work', 'New Work.svg', 'n', 'Work-Design', 'Outsourcing-Gesellschaft', 'Start-up-Culture', 'Slash-Slash-Biografien', 'Permanent Beta', 'Silver Potentials', 'Corporate Health', 'Work-Life Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Co-Working', 'Service-Ökonomie', 'Social Business', 'Kollaboration', 'Open Innovation', 'Talentismus', 'On-demand Business', 'Flexicurity', 'Antifragilität', 'Urban Manufacturing', 'Power of Place', 'Kreativökonomie', ],
+    ['Gender Shift', 'Gender Shift.svg', 't', 'Super Daddys', 'Alpha Softies', 'Sexdesign', 'Proll-Professionals', 'Work-Life-Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Tiger Woman', 'Regenbogenfamilien', 'Neue Mütter', 'Phasenfamilien', ],
+    ['Silver Society', 'Silver Society.svg', 'y', 'Downaging', 'Ageless Consuming', 'Forever Youngsters', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Diversity', 'Liquid Youth', 'Silver Potentials', 'Healthness', 'Universal Design', ],
+    ['Mobilität', 'Mobilität.svg', 'm', '24/7 Gesellschaft', 'Carsharing', 'Autonomes Fahren', 'Third Places', 'Power of Place', 'Wearables', 'Langsamverkehr', 'E-Mobility', 'Bike-Boom', 'Unterwegsmärkte', 'Mobile Commerce', 'Mixed Mobility', 'End-to-End-Tourismus', ],
+    ['Sicherheit', 'Sicherheit.svg', 's', 'Super-Safe-Society', 'Trust Technology', 'Transparenz-Märkte', 'E-Health', 'Identitätsmanagement', 'Digital Reputation', 'Predictive Analytics', 'Privacy', 'Cybercrime', 'Big Data', 'Industrie 4.0', 'Flexicurity', 'Antifragilität', 'Simplexity', ],
 ]
-var trendCount = -1;
+var currentTrendNumber = -1;
 var trendHeadline = ""
 var trendItems = []
 var trendImage;
 
 var firstSelectedItem, secondSelectedItem;
+
+var trendNumbersArray = []
+var trendHeadlinesArray = []
+
+function extractTrendNumbers() {
+    for (var i = 0; i < data.length; i++) {
+        trendHeadlinesArray.push(data[i][0]);
+        trendNumbersArray.push(data[i][2]);
+    }
+}
 
 function createSlots(ringNumber) {
 
@@ -116,21 +126,6 @@ function getSeed() {
 function spin() {
     //var txt = 'seeds: ';
     for (var i = 1; i < 4; i++) {
-        var oldSeed = -1;
-        /*
-        checking that the old seed from the previous iteration is not the same as the current iteration;
-        if this happens then the reel will not spin at all
-        */
-        var oldClass = $('#ring' + i).attr('class');
-        if (oldClass.length > 4) {
-            oldSeed = parseInt(oldClass.slice(10));
-            console.log(oldSeed);
-        }
-        var seed = getSeed();
-        while (oldSeed == seed) {
-            seed = getSeed();
-        }
-
         var ani2 = 'spin ' + (0.3 + (0.05 * i)) + 's';
 
         $('#ring' + i)
@@ -153,7 +148,11 @@ var ringToStop = 1;
 
 $(document).ready(function() {
 
-    nextTrend();
+    extractTrendNumbers();
+    showHelpbox();
+
+    currentTrendNumber = 0;
+    selectTrend(currentTrendNumber);
 
     // hook start button
     $(window).keypress(function(e) {
@@ -166,33 +165,61 @@ $(document).ready(function() {
                 ringToStop = 1;
             }
         }
-    })
 
-    $(window).keypress(function(e) {
-        if (e.key === 'n' || e.key === 'N') {
-            nextTrend();
+        if (e.key === '+') {
+            selectTrend(currentTrendNumber + 1);
         }
-    })
 
-    // hook perspective
-    $(window).keypress(function(e) {
-        if (e.key === 'p' || e.key === 'P') {
+        if (e.key === '-') {
+            selectTrend(currentTrendNumber - 1);
+        }
+
+        if (e.key === 'p') {
             $('#stage').toggleClass('perspective-on perspective-off');
+        }
+
+        if (e.key === 'h') {
+            $('#helpbox').toggleClass('helpbox-on helpbox-off');
+        }
+
+        for (var i = 0; i < trendNumbersArray.length; i++) {
+            if (e.key === trendNumbersArray[i]) {
+                console.log(i);
+                selectTrend(i);
+            }
         }
     })
 });
 
-function nextTrend() {
-    ringToStop = 1;
-    trendCount++;
-    if (trendCount >= data.length) {
-        trendCount = 0;
+function showHelpbox() {
+    $('#helpbox').append('[h] Hilfe toggeln    ');
+    $('#helpbox').append('[+] Nächster Trend    ');
+    $('#helpbox').append('[-] Voriger Trend    ');
+    $('#helpbox').append('[p] Perspektive ändern    ');
+    $('#helpbox').append('[Space] Rad stoppen<br>');
+    for (var i = 0; i < trendNumbersArray.length; i++) {
+        $('#helpbox').append('[' + trendNumbersArray[i] + '] ' + trendHeadlinesArray[i] + '    ');
     }
-    trendItems = [...data[trendCount]]
+}
+
+
+
+function selectTrend(trendNumber) {
+    currentTrendNumber = trendNumber;
+    if (currentTrendNumber < 0) {
+        currentTrendNumber = data.length - 1;
+    }
+    if (currentTrendNumber > data.length - 1) {
+        currentTrendNumber = 0;
+    }
+    ringToStop = 1;
+
+    trendItems = [...data[currentTrendNumber]]
     trendHeadline = trendItems[0];
     trendItems.shift();
 
     trendImage = trendItems[0];
+    trendItems.shift();
     trendItems.shift();
 
     updateUI();
@@ -220,7 +247,7 @@ function updateUI() {
 }
 
 function updateHeadline() {
-    $("#headline").html('<img src="' + trendImage + '" width="60px" style="vertical-align: middle;padding-right:15px" /><span style="vertical-align: middle;">' + trendHeadline.toUpperCase() + '</span>');
+    $("#headline").html('<img src="Logos/' + trendImage + '" width="60px" style="vertical-align: middle;padding-right:15px" /><span style="vertical-align: middle;">' + trendHeadline.toUpperCase() + '</span>');
 }
 
 function sleep(milliseconds) {

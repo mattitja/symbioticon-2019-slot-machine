@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
     background: #000;
 }
 
@@ -12,6 +13,21 @@ body {
     color: #fff;
     margin: auto;
     margin-top: 60px;
+}
+
+.helpbox-on {
+    color: #fff;
+    padding: 5px;
+    font-family: 'Futura LT W01 Medium';
+    font-size: 8px;
+    line-height: 15px;
+    white-space: pre;
+    background-color: #007acc;
+    text-align: center;
+}
+
+.helpbox-off {
+    display: none;
 }
 
 #stage {
