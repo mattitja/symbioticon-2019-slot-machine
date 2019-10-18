@@ -1,0 +1,247 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+}
+
+#headline {
+    font-family: 'Futura LT W01 Bold';
+    font-size: 35px;
+    width: 50%;
+    text-align: center;
+    color: #fff;
+    margin: auto;
+    margin-top: 60px;
+}
+
+#stage {
+    margin: 0px auto;
+    width: 960px;
+    padding: auto 0 40px;
+    background: #000;
+}
+
+#shader {
+    width: 100%;
+    z-index: 0;
+    height: 400px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 255), rgba(0, 0, 0, 255) 20%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 255) 80%, rgba(0, 0, 0, 255));
+    position: absolute;
+}
+
+.perspective-on {
+    -webkit-perspective: 1400px;
+    -moz-perspective: 1400px;
+    perspective: 1400px;
+    /* Setting the perspective of the contents of the stage but not the stage itself*/
+}
+
+.perspective-off {
+    -webkit-perspective: 0;
+    -moz-perspective: 0;
+    perspective: 0;
+}
+
+#rotate {
+    margin: 0 auto 0;
+    width: 960px;
+    height: 220px;
+    position: absolute;
+    padding-top: 160px;
+    /* Ensure that we're in 3D space */
+    transform-style: preserve-3d;
+}
+
+.ring {
+    margin: 0 10px;
+    width: 300px;
+    height: 50px;
+    float: left;
+    transform-style: preserve-3d;
+}
+
+.slot {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    box-sizing: border-box;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.00);
+    border: solid 0px #000;
+    border-radius: 3px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.frameSlot {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    box-sizing: border-box;
+    opacity: 0.9;
+    /*color: rgba(0,0,0,0.9);*/
+    /*background: #fff;*/
+    border: solid 1px #c4676a;
+    z-index: 4;
+    border-radius: 3px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.backface-on {
+    -webkit-backface-visibility: visible;
+    -moz-backface-visibility: visible;
+    backface-visibility: visible;
+}
+
+.slot p {
+    font-size: 15px;
+    line-height: 50px;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-family: 'Futura LT W01 Medium';
+}
+
+.go {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+label {
+    cursor: pointer;
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+}
+
+.tilted {
+    transform: rotateY(45deg);
+}
+
+
+/*=====*/
+
+.spin {
+    transform: rotateX(-360deg);
+}
+
+.stop {
+    transform: rotateX(-1440deg);
+}
+
+
+/*=====*/
+
+@keyframes stop {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(-1440deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(-360deg);
+    }
+}
+
+@font-face {
+    font-family: "Futura W01 Black";
+    src: url("Fonts/774869/100b737d-1725-4523-b1fc-d2a279733ab7.eot?#iefix");
+    src: url("Fonts/774869/100b737d-1725-4523-b1fc-d2a279733ab7.eot?#iefix") format("eot"), url("Fonts/774869/d72b159d-2d4f-4eb7-8ee2-27eaed06f292.woff2") format("woff2"), url("Fonts/774869/6a6f96a4-65cb-4644-aae9-f4a35f4b47a8.woff") format("woff"), url("Fonts/774869/c78afce6-c389-467f-adae-6d3e774ae59b.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Light";
+    src: url("Fonts/1475786/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix");
+    src: url("Fonts/1475786/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix") format("eot"), url("Fonts/1475786/26091050-06ef-4fd5-b199-21b27c0ed85e.woff2") format("woff2"), url("Fonts/1475786/cca525a8-ad89-43ae-aced-bcb49fb271dc.woff") format("woff"), url("Fonts/1475786/88cc7a39-1834-4468-936a-f3c25b5d81a1.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Light Oblique";
+    src: url("Fonts/1475792/65d2d2f2-a130-47d4-b7db-1d4a0cd63b4b.eot?#iefix");
+    src: url("Fonts/1475792/65d2d2f2-a130-47d4-b7db-1d4a0cd63b4b.eot?#iefix") format("eot"), url("Fonts/1475792/f6be6d1e-a972-4744-8e7b-5379116f644d.woff2") format("woff2"), url("Fonts/1475792/8444512b-291a-403f-99eb-5ec8a1e3c7e2.woff") format("woff"), url("Fonts/1475792/c151aaa9-4ac5-4588-bb55-4d49e5b4186b.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Book";
+    src: url("Fonts/1475798/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix");
+    src: url("Fonts/1475798/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix") format("eot"), url("Fonts/1475798/8bf38806-3423-4080-b38f-d08542f7e4ac.woff2") format("woff2"), url("Fonts/1475798/e2b9cbeb-fa8e-41cd-8a6a-46044b29ba52.woff") format("woff"), url("Fonts/1475798/c2a69697-4f06-4764-abd4-625031a84e31.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Book Oblique";
+    src: url("Fonts/1475804/834e05b5-87ff-453f-9d74-a93eb930e1ec.eot?#iefix");
+    src: url("Fonts/1475804/834e05b5-87ff-453f-9d74-a93eb930e1ec.eot?#iefix") format("eot"), url("Fonts/1475804/159c40d5-d5b5-4d06-b7ba-7762c03ce985.woff2") format("woff2"), url("Fonts/1475804/03937062-17d3-443d-809c-d51e0397aaa3.woff") format("woff"), url("Fonts/1475804/19124b27-09ee-4d4c-b213-ec1c114d2945.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Medium";
+    src: url("Fonts/1475810/0a41510f-c527-4001-89c5-d66d2c9ed34b.eot?#iefix");
+    src: url("Fonts/1475810/0a41510f-c527-4001-89c5-d66d2c9ed34b.eot?#iefix") format("eot"), url("Fonts/1475810/e17c7943-8db2-4470-9e2a-74a8d01f6776.woff2") format("woff2"), url("Fonts/1475810/6c72b0cb-89a1-4da9-8574-9244967bd9d6.woff") format("woff"), url("Fonts/1475810/dd79c75a-b0c9-4d70-a5a7-bdde1d5449fd.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Medium Oblique";
+    src: url("Fonts/1475816/9d0eacce-0f74-4687-8e3e-25a2a9d507be.eot?#iefix");
+    src: url("Fonts/1475816/9d0eacce-0f74-4687-8e3e-25a2a9d507be.eot?#iefix") format("eot"), url("Fonts/1475816/4a6ce888-0fa9-4d97-883d-55dbadc64ac0.woff2") format("woff2"), url("Fonts/1475816/5329204a-825b-4502-b125-f2708d2d30c0.woff") format("woff"), url("Fonts/1475816/af888eb2-1bde-4c44-b483-b11db932a8ad.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Bold";
+    src: url("Fonts/1475822/87f56fc1-ab05-4355-90af-9e83740663af.eot?#iefix");
+    src: url("Fonts/1475822/87f56fc1-ab05-4355-90af-9e83740663af.eot?#iefix") format("eot"), url("Fonts/1475822/3cf9e1e8-63a2-497f-86ed-6b63d6de1986.woff2") format("woff2"), url("Fonts/1475822/184895ac-545b-450b-9d3a-c0a0a7620977.woff") format("woff"), url("Fonts/1475822/bf8628d2-1ae0-4645-ba3f-3ce62d8d907c.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Bold Oblique";
+    src: url("Fonts/1475828/dc781dc0-5e81-4b8d-a608-e2bac19a9472.eot?#iefix");
+    src: url("Fonts/1475828/dc781dc0-5e81-4b8d-a608-e2bac19a9472.eot?#iefix") format("eot"), url("Fonts/1475828/0d6f913b-0b53-4085-8bc2-7b98d4ee9429.woff2") format("woff2"), url("Fonts/1475828/723c2eab-ca44-4b97-95be-f709b1910ed2.woff") format("woff"), url("Fonts/1475828/4043d778-6aa8-4da3-88fb-f25e99332d90.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Extra Bold";
+    src: url("Fonts/1475834/19530450-4023-4f4b-a843-f691aaa9a120.eot?#iefix");
+    src: url("Fonts/1475834/19530450-4023-4f4b-a843-f691aaa9a120.eot?#iefix") format("eot"), url("Fonts/1475834/23effe05-f9b3-417b-8186-358fa1a487ba.woff2") format("woff2"), url("Fonts/1475834/4889f3e2-62f3-4272-9187-ec5c7e08b16b.woff") format("woff"), url("Fonts/1475834/3268e049-ecc8-4b01-b169-43faa731c62c.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Extra Bold Obl";
+    src: url("Fonts/1475840/20cbe9db-2741-465e-bcdf-fc7775b6a18c.eot?#iefix");
+    src: url("Fonts/1475840/20cbe9db-2741-465e-bcdf-fc7775b6a18c.eot?#iefix") format("eot"), url("Fonts/1475840/e26823d0-8dd8-4bff-88e2-2369f794cbac.woff2") format("woff2"), url("Fonts/1475840/99afbe1e-25ce-4bdd-827a-6b522dd7ec3f.woff") format("woff"), url("Fonts/1475840/8893136d-e4c2-4ef2-8b54-e36d40802c93.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Heavy";
+    src: url("Fonts/1475846/752e3189-96d5-4999-8ae7-c435a470461b.eot?#iefix");
+    src: url("Fonts/1475846/752e3189-96d5-4999-8ae7-c435a470461b.eot?#iefix") format("eot"), url("Fonts/1475846/f3fa9288-dc04-4f75-b949-b06584863c9c.woff2") format("woff2"), url("Fonts/1475846/6b1bbd38-7556-4809-a151-88182a37116e.woff") format("woff"), url("Fonts/1475846/1f56887e-52d4-4229-b219-513cbef3ff58.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Heavy Oblique";
+    src: url("Fonts/1475852/502d9cc6-4b26-4c13-ad54-72339130d2a3.eot?#iefix");
+    src: url("Fonts/1475852/502d9cc6-4b26-4c13-ad54-72339130d2a3.eot?#iefix") format("eot"), url("Fonts/1475852/00bc1975-5e32-4877-b2b1-3db7a94f5aaa.woff2") format("woff2"), url("Fonts/1475852/c98bf34a-3735-4453-8e0b-4fee87a78bd8.woff") format("woff"), url("Fonts/1475852/0a40b703-0f34-4522-a66b-71269415fe7a.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura LT W01 Medium Condensed";
+    src: url("Fonts/1475870/fbbd35b9-df6a-4550-8731-edef7cb1f764.eot?#iefix");
+    src: url("Fonts/1475870/fbbd35b9-df6a-4550-8731-edef7cb1f764.eot?#iefix") format("eot"), url("Fonts/1475870/8f8e3475-0d53-4055-8dbc-997d3e7a73de.woff2") format("woff2"), url("Fonts/1475870/5af82934-5078-4495-9aa1-bcaec40ea1e8.woff") format("woff"), url("Fonts/1475870/886112d6-26ae-4248-9ec0-a357acf06bd7.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Futura W01 Display";
+    src: url("Fonts/5394396/2286260e-400c-409f-96cd-5fa952aedc38.eot?#iefix");
+    src: url("Fonts/5394396/2286260e-400c-409f-96cd-5fa952aedc38.eot?#iefix") format("eot"), url("Fonts/5394396/fc4c4d88-14b6-4795-afac-f1d75645fa49.woff2") format("woff2"), url("Fonts/5394396/ba53523d-739d-4e8b-9700-d1320104e840.woff") format("woff"), url("Fonts/5394396/0719d412-7d98-4329-a5b1-1cd711aaa256.ttf") format("truetype");
+}
