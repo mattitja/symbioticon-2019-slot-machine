@@ -3,13 +3,20 @@ const SLOTS_PER_REEL = 12;
 // current settings give a value of 149, rounded to 150
 const REEL_RADIUS = 100;
 
+var startSound;
+var stopSound;
+var music;
+var running1Sound;
+var winningSound;
+
+var startable = true;
 
 // excel data import
 var data = [
     ['Wissenskultur', 'Wissenskultur.svg', 'w', 'Open Science', 'Informationsdesign', 'Bildungsbusiness', 'Massive Open Online Course', 'Gamification', 'Predictive Analytics', 'Talentismus', 'Open Innovation', 'Kollaboration', 'Sharing Economy', 'Female Shift', 'Life-Long-Learning', 'Tutorial Learning', 'Creativiteens', 'Neugiermanagement', ],
     ['Konnektivität', 'Konnektivität.svg', 'k', 'Augmented Reality', 'E-Commerce', 'Crowd Funding', 'FinTech', 'Industrie 4.0', 'Big Data', 'Cybercrime', 'Privacy', 'Predictive Analytics', 'Selftracking', 'E-Health', 'Me-Cloud', 'Open Innovation', 'Pop-up Money', 'Swapping', 'Smart Devices', 'Internet der Dinge', 'Social Networks', ],
     ['Urbanisierung', 'Urbanisierung.svg', 'u', 'Bevölkerungswachstum', 'Third Places', 'Collaborative Living', 'Urban Manufacturing', 'Urban Mining', 'Urban Farming', 'E-Mobility', 'Bike Boom', 'Megacities', 'Global Cities', 'Landflucht', 'Schrumpfende Städte', 'Smart Cities', ],
-    ['Neo-Ökologie', 'Neo-Ökologie.svg', 'ö', 'Nachhaltigkeitsgesellschaft', 'Post-Carbon-Gesellschaft', 'Bio-Boom', 'Gutbürger', 'Slow Culture', 'Maker Movement', 'Sharing Economy', 'Postwachstumsökonomie', 'Social Business', 'Fair Trade', 'Swapping', 'Zero Waste', 'Green Tech', 'Urban Farming', 'E-Mobility', 'Circular Economy', ],
+    ['Neo-Ökologie', 'Neo-Oekologie.svg', 'ö', 'Nachhaltigkeitsgesellschaft', 'Post-Carbon-Gesellschaft', 'Bio-Boom', 'Gutbürger', 'Slow Culture', 'Maker Movement', 'Sharing Economy', 'Postwachstumsökonomie', 'Social Business', 'Fair Trade', 'Swapping', 'Zero Waste', 'Green Tech', 'Urban Farming', 'E-Mobility', 'Circular Economy', ],
     ['Globalisierung', 'Globalisierung.svg', 'q', 'Glokalisierung', 'Multipolare Weltordnung', 'Cybercrime', 'On-demand Business', 'Near-shoring', 'Schattenökonomie', 'Pop-up Money', 'Fair Trade', 'Social Business', 'Postwachstumsökonomie', 'Womanomics', 'Rising Africa', 'Weltmacht China', 'Global Cities', 'Migration', ],
     ['Individualisierung', 'Individualisierung.svg', 'i', 'Single-Gesellschaft', 'Lebensqualität', 'Selftracking', 'Identitätsmanagement', 'Me-Cloud', 'Small-World-Networks', 'Maker Movement', 'Diversity', 'Liquid Youth', 'Multigrafie', 'Tutorial Learning', 'Regenbogenfamilien', 'Wir-Kultur', ],
     ['Gesundheit', 'Gesundheit.svg', 'g', 'Sportivity', 'Detoxing', 'Komplementärmedizin', 'Lebensqualität', 'Selftracking', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Work-Life-Blending', 'Corporate Health', 'Healthness', 'Foodies', 'Lebensenergie', 'Achtsamkeit', ],
@@ -81,7 +88,7 @@ function createSlots(ringNumber) {
         // the position is randomized to 
 
         //var content = $(slot).append('<p>' + ((seed + i)%12)+ '</p>');
-        var content = $(slot).append('<p>' + randomItem.toUpperCase() + '</p>');
+        var content = $(slot).append('<p class="item">' + randomItem.toUpperCase() + '</p>');
 
         // add the poster to the row
         $('#ring' + ringNumber).append(slot);
@@ -123,46 +130,115 @@ function getSeed() {
     return Math.floor(Math.random() * (SLOTS_PER_REEL));
 }
 
-function spin() {
+
+function initWheelSpin() {
     //var txt = 'seeds: ';
     for (var i = 1; i < 4; i++) {
-        var ani2 = 'spin ' + (0.3 + (0.05 * i)) + 's';
-
         $('#ring' + i)
-            .css('animation', ani2)
-            .attr('class', 'ring spin')
-            .css('animationIterationCount', 'infinite')
-            .css('animation-timing-function', 'linear');
+            .css('animation', 'initWheelSpin 1.5s')
+            .attr('class', 'ring initWheelSpin')
+            .css('animationIterationCount', '1')
+            .css('animation-timing-function', 'ease-in');
     }
 }
 
-function stop(ringNumber) {
-    $('#ring' + ringNumber)
-        .css('animation', 'stop 3s')
-        .attr('class', 'ring stop')
-        .css('animationIterationCount', '1')
-        .css('animation-timing-function', 'ease-out');
+function spin() {
+    startable = false;
+    running = true;
+    startSound.play();
+    running1Sound.play();
+    initWheelSpin();
+
+    setTimeout(function() {
+        for (var i = 1; i < 4; i++) {
+            var ani2 = 'spin ' + (0.3 + (0.05 * i)) + 's';
+
+            $('#ring' + i)
+                .css('animation', ani2)
+                .attr('class', 'ring spin')
+                .css('animationIterationCount', 'infinite')
+                .css('animation-timing-function', 'linear');
+        }
+
+        music.play();
+
+    }, 1500)
 }
 
-var ringToStop = 1;
+
+
+function stop() {
+    running = false;
+    $('#ring1')
+        .css('animation', 'stop1 0.5s')
+        .attr('class', 'ring stop1')
+        .css('animationIterationCount', '1')
+        .css('animation-timing-function', 'ease-out');
+
+
+
+
+
+    setTimeout(function() {
+        stopSound.play();
+        music.stop();
+    }, 500)
+
+    setTimeout(function() {
+        $('#ring2')
+            .css('animation', 'stop1 0.5s')
+            .attr('class', 'ring stop1')
+            .css('animationIterationCount', '1')
+            .css('animation-timing-function', 'ease-out');
+    }, 750)
+
+    setTimeout(function() {
+        stopSound.stop();
+        stopSound.play();
+    }, 1250)
+
+    setTimeout(function() {
+        $('#ring3')
+            .css('animation', 'stop1 0.5s')
+            .attr('class', 'ring stop1')
+            .css('animationIterationCount', '1')
+            .css('animation-timing-function', 'ease-out');
+
+    }, 1500)
+
+    setTimeout(function() {
+        stopSound.stop();
+        stopSound.play();
+
+    }, 2000)
+
+    setTimeout(function() {
+        running1Sound.stop();
+    }, 2000)
+
+    setTimeout(function() {
+        winningSound.play();
+        startable = true;
+    }, 2500)
+
+}
+
+var running = false;
 
 $(document).ready(function() {
+
+    initSounds();
 
     extractTrendNumbers();
     showHelpbox();
 
-    currentTrendNumber = 0;
-    selectTrend(currentTrendNumber);
-
     // hook start button
     $(window).keypress(function(e) {
         if (e.key === ' ' || e.key === 'Spacebar') {
-            if (ringToStop <= 3) {
-                stop(ringToStop);
-                ringToStop++;
-            } else {
+            if (running) {
+                stop();
+            } else if (!running && startable) {
                 respin();
-                ringToStop = 1;
             }
         }
 
@@ -182,6 +258,12 @@ $(document).ready(function() {
             $('#helpbox').toggleClass('helpbox-on helpbox-off');
         }
 
+        if (e.key === 'x') {
+            if (startable) {
+                $('#map').attr('class', 'map-visible');
+            }
+        }
+
         for (var i = 0; i < trendNumbersArray.length; i++) {
             if (e.key === trendNumbersArray[i]) {
                 console.log(i);
@@ -190,6 +272,16 @@ $(document).ready(function() {
         }
     })
 });
+
+
+
+function initSounds() {
+    stopSound = new sound("stop.mp3", false);
+    startSound = new sound("start.wav", false);
+    music = new sound("music2.mp3", true);
+    running1Sound = new sound("running1.mp3", true);
+    winningSound = new sound("music_end.mp3", false);
+}
 
 function showHelpbox() {
     $('#helpbox').append('[h] Hilfe toggeln    ');
@@ -205,26 +297,29 @@ function showHelpbox() {
 
 
 function selectTrend(trendNumber) {
-    currentTrendNumber = trendNumber;
-    if (currentTrendNumber < 0) {
-        currentTrendNumber = data.length - 1;
+    $('#map').attr('class', 'map-invisible');
+    if (startable) {
+        currentTrendNumber = trendNumber;
+        if (currentTrendNumber < 0) {
+            currentTrendNumber = data.length - 1;
+        }
+        if (currentTrendNumber > data.length - 1) {
+            currentTrendNumber = 0;
+        }
+        ringToStop = 1;
+
+        trendItems = [...data[currentTrendNumber]]
+        trendHeadline = trendItems[0];
+        trendItems.shift();
+
+        trendImage = trendItems[0];
+        trendItems.shift();
+        trendItems.shift();
+
+        updateUI();
+        spin();
     }
-    if (currentTrendNumber > data.length - 1) {
-        currentTrendNumber = 0;
-    }
-    ringToStop = 1;
 
-    trendItems = [...data[currentTrendNumber]]
-    trendHeadline = trendItems[0];
-    trendItems.shift();
-
-    trendImage = trendItems[0];
-    trendItems.shift();
-    trendItems.shift();
-
-    updateUI();
-
-    spin();
 }
 
 function respin() {
@@ -256,5 +351,25 @@ function sleep(milliseconds) {
         if ((new Date().getTime() - start) > milliseconds) {
             break;
         }
+    }
+}
+
+function sound(src, loop) {
+    this.sound = document.createElement("audio");
+    this.sound.src = "Sounds/" + src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    if (loop == true) {
+        this.sound.loop = true;
+    }
+    document.body.appendChild(this.sound);
+    this.play = function() {
+        this.sound.play();
+
+    }
+    this.stop = function() {
+        this.sound.pause();
+        this.sound.currentTime = 0;
     }
 }

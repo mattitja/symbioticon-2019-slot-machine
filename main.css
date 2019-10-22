@@ -20,6 +20,7 @@ body {
     padding: 5px;
     font-family: 'Futura LT W01 Medium';
     font-size: 8px;
+    z-index: 200;
     line-height: 15px;
     white-space: pre;
     background-color: #007acc;
@@ -112,7 +113,7 @@ body {
     backface-visibility: visible;
 }
 
-.slot p {
+.item {
     font-size: 15px;
     line-height: 50px;
     margin: 0;
@@ -136,6 +137,25 @@ label {
     text-align: center;
 }
 
+.map-visible {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    z-index: 100;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-image: url('map.jpg');*/
+    background-color: black;
+}
+
+.map-invisible {
+    display: none;
+}
+
 .tilted {
     transform: rotateY(45deg);
 }
@@ -147,19 +167,49 @@ label {
     transform: rotateX(-360deg);
 }
 
-.stop {
-    transform: rotateX(-1440deg);
+.initWheelSpin {
+    transform: rotateX(-180deg);
+}
+
+.stop1 {
+    transform: rotateX(-1080deg);
+}
+
+.stop2 {
+    transform: rotateX(-2160deg);
+}
+
+.stop3 {
+    transform: rotateX(-3240deg);
 }
 
 
 /*=====*/
 
-@keyframes stop {
+@keyframes stop1 {
     0% {
         transform: rotateX(0);
     }
     100% {
-        transform: rotateX(-1440deg);
+        transform: rotateX(-1080deg);
+    }
+}
+
+@keyframes stop2 {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(-2160deg);
+    }
+}
+
+@keyframes stop3 {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(-3240deg);
     }
 }
 
@@ -169,6 +219,15 @@ label {
     }
     100% {
         transform: rotateX(-360deg);
+    }
+}
+
+@keyframes initWheelSpin {
+    0% {
+        transform: rotateX(180deg);
+    }
+    100% {
+        transform: rotateX(-1440deg);
     }
 }
 
