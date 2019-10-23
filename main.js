@@ -138,9 +138,18 @@ function initWheelSpin() {
     //var txt = 'seeds: ';
     for (var i = 1; i < 4; i++) {
         $('#ring' + i)
+            .css('-webkit-animation', 'initWheelSpin ' + TURNING_SPEED + 's')
+            .css('-moz-animation', 'initWheelSpin ' + TURNING_SPEED + 's')
+            .css('-o-animation', 'initWheelSpin ' + TURNING_SPEED + 's')
             .css('animation', 'initWheelSpin ' + TURNING_SPEED + 's')
             .attr('class', 'ring initWheelSpin')
+            .css('-webkit-animationIterationCount', '1')
+            .css('-moz-animationIterationCount', '1')
+            .css('-o-animationIterationCount', '1')
             .css('animationIterationCount', '1')
+            .css('-webkit-animation-timing-function', 'ease-in')
+            .css('-moz-animation-timing-function', 'ease-in')
+            .css('-o-animation-timing-function', 'ease-in')
             .css('animation-timing-function', 'ease-in');
     }
 }
@@ -160,12 +169,19 @@ function spin() {
     setTimeout(function() {
         stopable = true;
         for (var i = 1; i < 4; i++) {
-            var ani2 = 'spin ' + TURNING_SPEED + 's';
-
             $('#ring' + i)
-                .css('animation', ani2)
+                .css('-webkit-animation', 'spin ' + TURNING_SPEED + 's')
+                .css('-moz-animation', 'spin ' + TURNING_SPEED + 's')
+                .css('-o-animation', 'spin ' + TURNING_SPEED + 's')
+                .css('animation', 'spin ' + TURNING_SPEED + 's')
                 .attr('class', 'ring spin')
+                .css('-webkit-animationIterationCount', 'infinite')
+                .css('-moz-animationIterationCount', 'infinite')
+                .css('-o-animationIterationCount', 'infinite')
                 .css('animationIterationCount', 'infinite')
+                .css('-webkit-animation-timing-function', 'linear')
+                .css('-moz-animation-timing-function', 'linear')
+                .css('-o-animation-timing-function', 'linear')
                 .css('animation-timing-function', 'linear');
         }
 
@@ -176,7 +192,7 @@ function spin() {
 
 var STOP_CONST = 30;
 
-var TURNING_SPEED = 2;
+var TURNING_SPEED = 1.5;
 
 function stopRing(ringNumber) {
     var rotation = getRotationDegree(ringNumber);
@@ -189,9 +205,18 @@ function stopRing(ringNumber) {
     console.log("time " + time);
     //var time = 0.2;
     $('#ring' + ringNumber)
+        .css('-webkit-animation', 'stop' + straightRotation + ' ' + time + 's')
+        .css('-moz-animation', 'stop' + straightRotation + ' ' + time + 's')
+        .css('-o-animation', 'stop' + straightRotation + ' ' + time + 's')
         .css('animation', 'stop' + straightRotation + ' ' + time + 's')
         .attr('class', 'ring stop' + straightRotation)
+        .css('-webkit-animationIterationCount', '1')
+        .css('-moz-animationIterationCount', '1')
+        .css('-o-animationIterationCount', '1')
         .css('animationIterationCount', '1')
+        .css('-webkit-animation-timing-function', 'linear')
+        .css('-moz-animation-timing-function', 'linear')
+        .css('-o-animation-timing-function', 'linear')
         .css('animation-timing-function', 'linear');
 }
 
@@ -281,19 +306,19 @@ $(document).ready(function() {
 
 
 function initSounds() {
-    stopSound = new sound("stop.mp3", false);
-    startSound = new sound("start.wav", false);
-    music1 = new sound("music2.mp3", true);
-    music2 = new sound("music2_2.mp3", true);
-    running1Sound = new sound("running1.mp3", true);
-    winningSound = new sound("music_end.mp3", false);
+    stopSound = new sound("stop.mp3", false, 1);
+    startSound = new sound("start.wav", false, 1);
+    music1 = new sound("music2.mp3", true, 1);
+    music2 = new sound("music2_2.mp3", true, 1);
+    running1Sound = new sound("running1.mp3", true, 0.5);
+    winningSound = new sound("music_end.mp3", false, 1);
 }
 
 function playMusic() {
     if (m) {
         music1.play();
     } else {
-        music1.play();
+        music2.play();
     }
     m = !m;
 }
@@ -363,12 +388,13 @@ function updateHeadline() {
     $("#headline").html('<img src="Logos/' + trendImage + '" width="60px" style="vertical-align: middle;padding-right:15px" /><span style="vertical-align: middle;">' + trendHeadline.toUpperCase() + '</span>');
 }
 
-function sound(src, loop) {
+function sound(src, loop, volume) {
     this.sound = document.createElement("audio");
     this.sound.src = "Sounds/" + src;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
+    this.sound.volume = volume;
     if (loop == true) {
         this.sound.loop = true;
     }

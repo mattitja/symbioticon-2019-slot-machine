@@ -15,6 +15,24 @@
             margin-top: 60px;
         }
         
+        #symb-logo {
+            position: absolute;
+            padding: 0;
+            height: 10px;
+            margin: 15px;
+            top: 0;
+            left: 0;
+        }
+        
+        #zi-logo {
+            position: absolute;
+            padding: 0;
+            height: 40px;
+            margin: 15px;
+            top: 0;
+            right: 0;
+        }
+        
         .helpbox-on {
             color: #fff;
             padding: 5px;
@@ -66,6 +84,9 @@
             position: absolute;
             padding-top: 160px;
             /* Ensure that we're in 3D space */
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
             transform-style: preserve-3d;
         }
         
@@ -74,10 +95,10 @@
             width: 300px;
             height: 50px;
             float: left;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
             transform-style: preserve-3d;
-            -webkit-transition: -webkit-transform .8s ease-in-out;
-            -ms-transition: -ms-transform .8s ease-in-out;
-            transition: transform .8s ease-in-out;
         }
         
         .slot {
@@ -102,7 +123,7 @@
             opacity: 0.9;
             /*color: rgba(0,0,0,0.9);*/
             /*background: #fff;*/
-            border: solid 1px #c4676a;
+            border: solid 2px #c4676a;
             z-index: 4;
             border-radius: 3px;
             -webkit-backface-visibility: hidden;
@@ -158,27 +179,49 @@
         .map-invisible {
             display: none;
         }
-        
-        .tilted {
-            transform: rotateY(45deg);
-        }
         /*=====*/
         
         .spin {
+            -webkit-transform: rotateX(-360deg);
+            -moz-transform: rotateX(-360deg);
+            -o-transform: rotateX(-360deg);
             transform: rotateX(-360deg);
         }
         
         .initWheelSpin {
+            -webkit-transform: rotateX(-180deg);
+            -moz-transform: rotateX(-180deg);
+            -o-transform: rotateX(-180deg);
             transform: rotateX(-180deg);
         }
-        
-        .paused {
-            -webkit-animation-play-state: paused !important;
-            -moz-animation-play-state: paused !important;
-            -o-animation-play-state: paused !important;
-            animation-play-state: paused !important;
-        }
         /*=====*/
+        
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotateX(-0deg);
+            }
+            100% {
+                -webkit-transform: rotateX(-360deg);
+            }
+        }
+        
+        @-moz-keyframes spin {
+            0% {
+                -moz-transform: rotateX(-0deg);
+            }
+            100% {
+                -moz-transform: rotateX(-360deg);
+            }
+        }
+        
+        @-o-keyframes spin {
+            0% {
+                -o-transform: rotateX(-0deg);
+            }
+            100% {
+                -o-transform: rotateX(-360deg);
+            }
+        }
         
         @keyframes spin {
             0% {
@@ -186,6 +229,33 @@
             }
             100% {
                 transform: rotateX(-360deg);
+            }
+        }
+        
+        @-webkit-keyframes initWheelSpin {
+            0% {
+                -webkit-transform: rotateX(180deg);
+            }
+            100% {
+                -webkit-transform: rotateX(0deg);
+            }
+        }
+        
+        @-moz-keyframes initWheelSpin {
+            0% {
+                -moz-transform: rotateX(180deg);
+            }
+            100% {
+                -moz-transform: rotateX(0deg);
+            }
+        }
+        
+        @-o-keyframes initWheelSpin {
+            0% {
+                -o-transform: rotateX(180deg);
+            }
+            100% {
+                -o-transform: rotateX(0deg);
             }
         }
         
