@@ -5,11 +5,13 @@ const REEL_RADIUS = 100;
 
 var startSound;
 var stopSound;
-var music;
+
 var running1Sound;
 var winningSound;
 
 var startable = true;
+var stopable = false;
+var m = true;
 
 // excel data import
 var data = [
@@ -31,8 +33,6 @@ var trendHeadline = ""
 var trendItems = []
 var trendImage;
 
-var firstSelectedItem, secondSelectedItem;
-
 var trendNumbersArray = []
 var trendHeadlinesArray = []
 
@@ -45,32 +45,34 @@ function extractTrendNumbers() {
 
 function createSlots(ringNumber) {
 
-    var slotAngle = 360 / SLOTS_PER_REEL;
+    var amountOfSlots = Math.floor(trendItems.length / 3);
 
-    //var items = ['Künstliche Intelligenz', 'Deine Mudda', 'Alice Weidel', 'Mobilität', 'Tukas', 'Haschisch legalisieren', 'Kopfkino', 'Liebe', 'Minze', 'Qualle', 'Pizza', 'Blockchain']
+    var startIndex;
+    var endIndex;
 
-    var ringItems = [...trendItems];
-
-
-    // shuffle and make sure all 3 rings are different
-    shuffle(ringItems);
     if (ringNumber == 1) {
-        firstSelectedItem = ringItems[0];
+        startIndex = 0;
+        endIndex = amountOfSlots;
     } else if (ringNumber == 2) {
-        while (ringItems[0] == firstSelectedItem) {
-            shuffle(ringItems);
-        }
-        secondSelectedItem = ringItems[0];
-    } else {
-        while (ringItems[0] == firstSelectedItem || ringItems[0] == secondSelectedItem) {
-            shuffle(ringItems);
-        }
+        startIndex = amountOfSlots;
+        endIndex = amountOfSlots * 2;
+    } else if (ringNumber == 3) {
+        startIndex = amountOfSlots * 2;
+        endIndex = trendItems.length;
     }
+    console.log('startIndex ' + startIndex)
+    console.log('endIndex ' + endIndex)
+    console.log('ringNumber ' + ringNumber)
+
+
+    var finalRingItems = [...trendItems].slice(startIndex, endIndex);
+    var ringItems = [...trendItems].slice(startIndex, endIndex);
+    console.log('ringItems ' + ringItems)
 
     for (var i = 0; i < SLOTS_PER_REEL; i++) {
 
         if (ringItems.length == 0) {
-            ringItems = [...trendItems];
+            ringItems = [...finalRingItems];
         }
         var randomItem = ringItems[0];
         ringItems.shift();
@@ -80,6 +82,7 @@ function createSlots(ringNumber) {
         slot.className = 'slot';
 
         // compute and assign the transform for this slot
+        var slotAngle = 360 / SLOTS_PER_REEL;
         var transform = 'rotateX(' + (slotAngle * i) + 'deg) translateZ(' + REEL_RADIUS + 'px)';
 
         slot.style.transform = transform;
@@ -114,7 +117,7 @@ function createFrameSlots(ring) {
     slot.className = 'frameSlot';
 
     // compute and assign the transform for this slot
-    var transform = 'rotateX(' + (slotAngle * i) + 'deg) translateZ(' + REEL_RADIUS + 'px)';
+    var transform = 'rotateX(0deg) translateZ(' + REEL_RADIUS + 'px)';
 
     slot.style.transform = transform;
 
@@ -135,7 +138,7 @@ function initWheelSpin() {
     //var txt = 'seeds: ';
     for (var i = 1; i < 4; i++) {
         $('#ring' + i)
-            .css('animation', 'initWheelSpin 1.5s')
+            .css('animation', 'initWheelSpin ' + TURNING_SPEED + 's')
             .attr('class', 'ring initWheelSpin')
             .css('animationIterationCount', '1')
             .css('animation-timing-function', 'ease-in');
@@ -146,12 +149,18 @@ function spin() {
     startable = false;
     running = true;
     startSound.play();
-    running1Sound.play();
+
     initWheelSpin();
 
     setTimeout(function() {
+        running1Sound.play();
+
+    }, 1000)
+
+    setTimeout(function() {
+        stopable = true;
         for (var i = 1; i < 4; i++) {
-            var ani2 = 'spin ' + (0.3 + (0.05 * i)) + 's';
+            var ani2 = 'spin ' + TURNING_SPEED + 's';
 
             $('#ring' + i)
                 .css('animation', ani2)
@@ -160,61 +169,55 @@ function spin() {
                 .css('animation-timing-function', 'linear');
         }
 
-        music.play();
+        playMusic();
 
-    }, 1500)
+    }, TURNING_SPEED * 1000)
 }
 
+var STOP_CONST = 30;
 
+var TURNING_SPEED = 2;
+
+function stopRing(ringNumber) {
+    var rotation = getRotationDegree(ringNumber);
+    console.log("rotation " + rotation);
+    var straightRotation = rotation + (rotation % 2);
+    console.log("straightRotation " + straightRotation);
+    var modulo = ((straightRotation % STOP_CONST) + STOP_CONST) % STOP_CONST;
+    console.log("modulo " + modulo);
+    var time = ((modulo * TURNING_SPEED) / 360);
+    console.log("time " + time);
+    //var time = 0.2;
+    $('#ring' + ringNumber)
+        .css('animation', 'stop' + straightRotation + ' ' + time + 's')
+        .attr('class', 'ring stop' + straightRotation)
+        .css('animationIterationCount', '1')
+        .css('animation-timing-function', 'linear');
+}
 
 function stop() {
     running = false;
-    $('#ring1')
-        .css('animation', 'stop1 0.5s')
-        .attr('class', 'ring stop1')
-        .css('animationIterationCount', '1')
-        .css('animation-timing-function', 'ease-out');
+    stopable = false;
 
-
-
-
+    stopRing(1);
+    stopSound.play();
+    stopMusic();
 
     setTimeout(function() {
+        stopRing(2);
+        stopSound.stop();
         stopSound.play();
-        music.stop();
-    }, 500)
-
-    setTimeout(function() {
-        $('#ring2')
-            .css('animation', 'stop1 0.5s')
-            .attr('class', 'ring stop1')
-            .css('animationIterationCount', '1')
-            .css('animation-timing-function', 'ease-out');
     }, 750)
 
     setTimeout(function() {
+        stopRing(3);
         stopSound.stop();
         stopSound.play();
-    }, 1250)
-
-    setTimeout(function() {
-        $('#ring3')
-            .css('animation', 'stop1 0.5s')
-            .attr('class', 'ring stop1')
-            .css('animationIterationCount', '1')
-            .css('animation-timing-function', 'ease-out');
-
     }, 1500)
 
     setTimeout(function() {
-        stopSound.stop();
-        stopSound.play();
-
-    }, 2000)
-
-    setTimeout(function() {
         running1Sound.stop();
-    }, 2000)
+    }, 1700)
 
     setTimeout(function() {
         winningSound.play();
@@ -235,10 +238,8 @@ $(document).ready(function() {
     // hook start button
     $(window).keypress(function(e) {
         if (e.key === ' ' || e.key === 'Spacebar') {
-            if (running) {
+            if (running && stopable) {
                 stop();
-            } else if (!running && startable) {
-                respin();
             }
         }
 
@@ -248,6 +249,10 @@ $(document).ready(function() {
 
         if (e.key === '-') {
             selectTrend(currentTrendNumber - 1);
+        }
+
+        if (e.key === 'ü') {
+            console.log("ding: " + getRotationDegree(1));
         }
 
         if (e.key === 'p') {
@@ -278,9 +283,24 @@ $(document).ready(function() {
 function initSounds() {
     stopSound = new sound("stop.mp3", false);
     startSound = new sound("start.wav", false);
-    music = new sound("music2.mp3", true);
+    music1 = new sound("music2.mp3", true);
+    music2 = new sound("music2_2.mp3", true);
     running1Sound = new sound("running1.mp3", true);
     winningSound = new sound("music_end.mp3", false);
+}
+
+function playMusic() {
+    if (m) {
+        music1.play();
+    } else {
+        music1.play();
+    }
+    m = !m;
+}
+
+function stopMusic() {
+    music1.stop();
+    music2.stop();
 }
 
 function showHelpbox() {
@@ -293,8 +313,6 @@ function showHelpbox() {
         $('#helpbox').append('[' + trendNumbersArray[i] + '] ' + trendHeadlinesArray[i] + '    ');
     }
 }
-
-
 
 function selectTrend(trendNumber) {
     $('#map').attr('class', 'map-invisible');
@@ -315,22 +333,22 @@ function selectTrend(trendNumber) {
         trendImage = trendItems[0];
         trendItems.shift();
         trendItems.shift();
+        shuffle(trendItems);
 
-        updateUI();
-        spin();
+        newSpin();
     }
 
 }
 
-function respin() {
+function newSpin() {
     updateUI();
     spin();
 }
 
 function updateUI() {
+    // clean previous contents
     $('.ring').html('');
 
-    // initiate slots 
     createSlots(1);
     createSlots(2);
     createSlots(3);
@@ -343,15 +361,6 @@ function updateUI() {
 
 function updateHeadline() {
     $("#headline").html('<img src="Logos/' + trendImage + '" width="60px" style="vertical-align: middle;padding-right:15px" /><span style="vertical-align: middle;">' + trendHeadline.toUpperCase() + '</span>');
-}
-
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
 }
 
 function sound(src, loop) {
@@ -372,4 +381,42 @@ function sound(src, loop) {
         this.sound.pause();
         this.sound.currentTime = 0;
     }
+}
+
+function getRotationDegree(elementNumber) {
+    var el = document.getElementById("ring" + elementNumber);
+    var st = window.getComputedStyle(el, null);
+    var tr = st.getPropertyValue("-webkit-transform") ||
+        st.getPropertyValue("-moz-transform") ||
+        st.getPropertyValue("-ms-transform") ||
+        st.getPropertyValue("-o-transform") ||
+        st.getPropertyValue("transform") ||
+        "FAIL";
+
+    // With rotate(30deg)...
+    // matrix(0.866025, 0.5, -0.5, 0.866025, 0px, 0px)
+    //console.log('Matrix: ' + tr);
+
+    // rotation matrix - http://en.wikipedia.org/wiki/Rotation_matrix
+
+    var values = tr.split('(')[1].split(')')[0].split(',');
+    //console.log(values);
+    var a = values[5]; //10
+    var b = values[6]; //9
+
+    var scale = Math.sqrt(a * a + b * b);
+
+    //console.log('Scale: ' + scale);
+
+    // arc sin, convert from radians to degrees, round
+    var sin = b / scale;
+    // next line works for 30deg but not 130deg (returns 50);
+    // var angle = Math.round(Math.asin(sin) * (180/Math.PI));
+    var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+
+    //console.log('Rotate: ' + angle + 'deg');
+    if (angle > 0) {
+        angle = (360 - angle) * -1;
+    }
+    return angle;
 }
