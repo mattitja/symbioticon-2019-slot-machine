@@ -25,7 +25,7 @@ var data = [
     ['New Work', 'New Work.svg', 'n', 'Work-Design', 'Outsourcing-Gesellschaft', 'Start-up-Culture', 'Slash-Slash-Biografien', 'Permanent Beta', 'Silver Potentials', 'Corporate Health', 'Work-Life Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Co-Working', 'Service-Ökonomie', 'Social Business', 'Kollaboration', 'Open Innovation', 'Talentismus', 'On-demand Business', 'Flexicurity', 'Antifragilität', 'Urban Manufacturing', 'Power of Place', 'Kreativökonomie', ],
     ['Gender Shift', 'Gender Shift.svg', 't', 'Super Daddys', 'Alpha Softies', 'Sexdesign', 'Proll-Professionals', 'Work-Life-Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Tiger Woman', 'Regenbogenfamilien', 'Neue Mütter', 'Phasenfamilien', ],
     ['Silver Society', 'Silver Society.svg', 'y', 'Downaging', 'Ageless Consuming', 'Forever Youngsters', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Diversity', 'Liquid Youth', 'Silver Potentials', 'Healthness', 'Universal Design', ],
-    ['Mobilität', 'Mobilität.svg', 'm', '24/7 Gesellschaft', 'Carsharing', 'Autonomes Fahren', 'Third Places', 'Power of Place', 'Wearables', 'Langsamverkehr', 'E-Mobility', 'Bike-Boom', 'Unterwegsmärkte', 'Mobile Commerce', 'Mixed Mobility', 'End-to-End-Tourismus', ],
+    ['Mobilität', 'Mobilitaet.svg', 'm', '24/7 Gesellschaft', 'Carsharing', 'Autonomes Fahren', 'Third Places', 'Power of Place', 'Wearables', 'Langsamverkehr', 'E-Mobility', 'Bike-Boom', 'Unterwegsmärkte', 'Mobile Commerce', 'Mixed Mobility', 'End-to-End-Tourismus', ],
     ['Sicherheit', 'Sicherheit.svg', 's', 'Super-Safe-Society', 'Trust Technology', 'Transparenz-Märkte', 'E-Health', 'Identitätsmanagement', 'Digital Reputation', 'Predictive Analytics', 'Privacy', 'Cybercrime', 'Big Data', 'Industrie 4.0', 'Flexicurity', 'Antifragilität', 'Simplexity', ],
 ]
 var currentTrendNumber = -1;
@@ -284,13 +284,18 @@ $(document).ready(function() {
             $('#stage').toggleClass('perspective-on perspective-off');
         }
 
+        if (e.key === 'c') {
+            $('#calibration-line').toggleClass('calibration-line-on calibration-line-off');
+        }
+
         if (e.key === 'h') {
             $('#helpbox').toggleClass('helpbox-on helpbox-off');
         }
 
         if (e.key === 'x') {
             if (startable) {
-                $('#map').attr('class', 'map-visible');
+                $('#map1').attr('class', 'map1-visible');
+                $('#map2').attr('class', 'map2-visible');
             }
         }
 
@@ -330,6 +335,7 @@ function stopMusic() {
 
 function showHelpbox() {
     $('#helpbox').append('[h] Hilfe toggeln    ');
+    $('#helpbox').append('[x] Karte zeigen    ');
     $('#helpbox').append('[+] Nächster Trend    ');
     $('#helpbox').append('[-] Voriger Trend    ');
     $('#helpbox').append('[p] Perspektive ändern    ');
@@ -340,8 +346,8 @@ function showHelpbox() {
 }
 
 function selectTrend(trendNumber) {
-    $('#map').attr('class', 'map-invisible');
     if (startable) {
+        hideMaps();
         currentTrendNumber = trendNumber;
         if (currentTrendNumber < 0) {
             currentTrendNumber = data.length - 1;
@@ -382,6 +388,11 @@ function updateUI() {
     createFrameSlots($('#ring6'));
 
     updateHeadline();
+}
+
+function hideMaps() {
+    $('#map1').attr('class', 'map-invisible');
+    $('#map2').attr('class', 'map-invisible');
 }
 
 function updateHeadline() {
