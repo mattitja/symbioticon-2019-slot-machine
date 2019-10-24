@@ -224,6 +224,22 @@ label {
     text-align: center;
 }
 
+.map0-visible {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .map1-visible {
     position: absolute;
     padding: 0;
@@ -254,7 +270,7 @@ label {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    opacity: 0.3;
+    opacity: 0.6;
 }
 
 .map3-visible {

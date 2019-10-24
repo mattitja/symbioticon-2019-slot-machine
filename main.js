@@ -5,6 +5,7 @@ const REEL_RADIUS = 100;
 
 var startSound;
 var stopSound;
+var bingSound;
 
 var running1Sound;
 var winningSound;
@@ -225,19 +226,20 @@ function stop() {
     stopable = false;
 
     stopRing(1);
-    stopSound.play();
+    playStopSounds();
     stopMusic();
 
     setTimeout(function() {
         stopRing(2);
-        stopSound.stop();
-        stopSound.play();
+        playStopSounds();
     }, 750)
 
     setTimeout(function() {
         stopRing(3);
-        stopSound.stop();
-        stopSound.play();
+        bingSound.stop();
+        bingSound.play();
+        confetti1();
+        playStopSounds();
     }, 1500)
 
     setTimeout(function() {
@@ -247,13 +249,44 @@ function stop() {
     setTimeout(function() {
         winningSound.play();
         startable = true;
+
     }, 2500)
 
+}
+
+function confetti1() {
+    confetti({
+        particleCount: 30,
+        spread: 70,
+        angle: 60,
+        zIndex: 500,
+        origin: {
+            x: 0,
+            y: 0.5
+        }
+    });
+    confetti({
+        particleCount: 30,
+        spread: 70,
+        angle: 120,
+        zIndex: 500,
+        origin: {
+            x: 1,
+            y: 0.5
+        }
+    });
+}
+
+function playStopSounds() {
+    stopSound.stop();
+    stopSound.play();
 }
 
 var running = false;
 
 $(document).ready(function() {
+
+
 
     initSounds();
 
@@ -311,6 +344,7 @@ $(document).ready(function() {
 
 function initSounds() {
     stopSound = new sound("stop.mp3", false, 1);
+    bingSound = new sound("bing.mp3", false, 1);
     startSound = new sound("start.wav", false, 1);
     music1 = new sound("music2.mp3", true, 1);
     music2 = new sound("music2_2.mp3", true, 1);
@@ -390,12 +424,14 @@ function updateUI() {
 }
 
 function showMaps() {
+    $('#map0').attr('class', 'map0-visible');
     $('#map1').attr('class', 'map1-visible');
     $('#map2').attr('class', 'map2-visible');
     $('#map3').attr('class', 'map3-visible');
 }
 
 function hideMaps() {
+    $('#map0').attr('class', 'map-invisible');
     $('#map1').attr('class', 'map-invisible');
     $('#map2').attr('class', 'map-invisible');
     $('#map3').attr('class', 'map-invisible');
