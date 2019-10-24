@@ -294,8 +294,7 @@ $(document).ready(function() {
 
         if (e.key === 'x') {
             if (startable) {
-                $('#map1').attr('class', 'map1-visible');
-                $('#map2').attr('class', 'map2-visible');
+                showMaps();
             }
         }
 
@@ -390,9 +389,16 @@ function updateUI() {
     updateHeadline();
 }
 
+function showMaps() {
+    $('#map1').attr('class', 'map1-visible');
+    $('#map2').attr('class', 'map2-visible');
+    $('#map3').attr('class', 'map3-visible');
+}
+
 function hideMaps() {
     $('#map1').attr('class', 'map-invisible');
     $('#map2').attr('class', 'map-invisible');
+    $('#map3').attr('class', 'map-invisible');
 }
 
 function updateHeadline() {

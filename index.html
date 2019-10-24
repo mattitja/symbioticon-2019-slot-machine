@@ -12,13 +12,13 @@
 <body>
 
 
-    <div id="map1" class="map1-visible"></div>
-    <div id="map2" class="map2-visible"></div>
+    <div id="map1" src="map1.png" class="map1-visible"></div>
+    <div id="map2" src="map2.png" class="map2-visible"></div>
+    <div id="map3" src="map2.png" class="map3-visible"></div>
     <div id="calibration-line" class="calibration-line-off"></div>
     <div id="slot-machine">
 
         <div id="headline">
-            loading...
         </div>
         <div class="helpbox-off" id="helpbox"></div>
         <img id="symb-logo" src="LOGO.png">
@@ -53,6 +53,10 @@
     <div id="preload-10"></div>
     <div id="preload-11"></div>
     <div id="preload-12"></div>
+    <mask id="mask5">
+        <circle cx="340" cy="340" r="290" fill="#fff" filter="url(#blur2)" />
+        <circle cx="340" cy="340" r="140" fill="#000" filter="url(#blur2)" />
+    </mask>
 </body>
 
 </html

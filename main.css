@@ -229,12 +229,12 @@ label {
     padding: 0;
     margin: 0;
     top: 0;
-    z-index: 100;
+    z-index: 102;
     left: 0;
     width: 100%;
     height: 100%;
     background-position: center;
-    background-image: url('map1.jpg');
+    background-image: url('map1.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -250,15 +250,35 @@ label {
     width: 100%;
     height: 100%;
     background-position: center;
-    background-image: url('map2.jpg');
+    background-image: url('map2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.map3-visible {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    z-index: 101;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-image: url('map2.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     animation-name: mapFadeOut;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    animation-duration: 0.4s;
-    animation-direction: alternate;
+    animation-duration: 5s;
+    animation-direction: alternate-reverse;
+    mask: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    mask-size: 700px;
+    mask-repeat: no-repeat;
 }
 
 .map-invisible {
@@ -267,10 +287,11 @@ label {
 
 @keyframes mapFadeOut {
     0% {
-        opacity: 1;
+        /*mask: linear-gradient(45deg, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 50%);*/
+        mask-position: right;
     }
     100% {
-        opacity: 0;
+        mask-position: left;
     }
 }
 
