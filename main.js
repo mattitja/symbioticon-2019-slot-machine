@@ -372,15 +372,15 @@ function stopMusic() {
 }
 
 function showHelpbox() {
+    $('#helpbox').append('[Space] Rad stoppen    ');
     $('#helpbox').append('[h] Hilfe toggeln    ');
-    $('#helpbox').append('[x] Karte zeigen    ');
-    $('#helpbox').append('[+] Nächster Trend    ');
-    $('#helpbox').append('[-] Voriger Trend    ');
-    $('#helpbox').append('[p] Perspektive ändern    ');
-    $('#helpbox').append('[Space] Rad stoppen<br>');
+    $('#helpbox').append('[x] Karte    ');
+    $('#helpbox').append('[+/-] Trend weiter/zurück    ');
+    $('#helpbox').append('[c] Kalibrierungslinie<br>');
     for (var i = 0; i < trendNumbersArray.length; i++) {
         $('#helpbox').append('[' + trendNumbersArray[i] + '] ' + trendHeadlinesArray[i] + '    ');
     }
+    $('#helpbox').append('<br> Nur mit Firefox kompatibel');
 }
 
 function selectTrend(trendNumber) {

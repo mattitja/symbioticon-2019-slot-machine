@@ -67,9 +67,9 @@ body {
 #symb-logo {
     position: absolute;
     padding: 0;
-    height: 10px;
+    height: 20px;
     margin: 15px;
-    z-index: 103;
+    z-index: 104;
     top: 0;
     left: 0;
 }
@@ -77,7 +77,7 @@ body {
 #zi-logo {
     position: absolute;
     padding: 0;
-    z-index: 102;
+    z-index: 104;
     height: 40px;
     margin: 15px;
     top: 0;
@@ -87,14 +87,14 @@ body {
 .helpbox-on {
     top: 0;
     right: 0;
+    z-index: 103;
     left: 0;
     position: absolute;
     color: #fff;
-    padding: 5px;
-    z-index: 101;
+    padding: 18px;
     font-family: 'Futura LT W01 Medium';
-    font-size: 9px;
-    line-height: 15px;
+    font-size: 11px;
+    line-height: 25px;
     white-space: pre;
     background-color: #007acc;
     text-align: center;
@@ -282,7 +282,7 @@ label {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .map3-visible {
@@ -302,10 +302,10 @@ label {
     animation-name: mapFadeOut;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-direction: alternate-reverse;
     mask: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    mask-size: 700px;
+    mask-size: 800px;
     mask-repeat: no-repeat;
 }
 
