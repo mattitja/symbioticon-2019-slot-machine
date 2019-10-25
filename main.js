@@ -16,23 +16,24 @@ var m = true;
 
 // excel data import
 var data = [
-    ['Wissenskultur', 'Wissenskultur.svg', 'w', 'Open Science', 'Informationsdesign', 'Bildungsbusiness', 'Massive Open Online Course', 'Gamification', 'Predictive Analytics', 'Talentismus', 'Open Innovation', 'Kollaboration', 'Sharing Economy', 'Female Shift', 'Life-Long-Learning', 'Tutorial Learning', 'Creativiteens', 'Neugiermanagement', ],
-    ['Konnektivität', 'Konnektivität.svg', 'k', 'Augmented Reality', 'E-Commerce', 'Crowd Funding', 'FinTech', 'Industrie 4.0', 'Big Data', 'Cybercrime', 'Privacy', 'Predictive Analytics', 'Selftracking', 'E-Health', 'Me-Cloud', 'Open Innovation', 'Pop-up Money', 'Swapping', 'Smart Devices', 'Internet der Dinge', 'Social Networks', ],
-    ['Urbanisierung', 'Urbanisierung.svg', 'u', 'Bevölkerungswachstum', 'Third Places', 'Collaborative Living', 'Urban Manufacturing', 'Urban Mining', 'Urban Farming', 'E-Mobility', 'Bike Boom', 'Megacities', 'Global Cities', 'Landflucht', 'Schrumpfende Städte', 'Smart Cities', ],
-    ['Neo-Ökologie', 'Neo-Oekologie.svg', 'ö', 'Nachhaltigkeitsgesellschaft', 'Post-Carbon-Gesellschaft', 'Bio-Boom', 'Gutbürger', 'Slow Culture', 'Maker Movement', 'Sharing Economy', 'Postwachstumsökonomie', 'Social Business', 'Fair Trade', 'Swapping', 'Zero Waste', 'Green Tech', 'Urban Farming', 'E-Mobility', 'Circular Economy', ],
-    ['Globalisierung', 'Globalisierung.svg', 'q', 'Glokalisierung', 'Multipolare Weltordnung', 'Cybercrime', 'On-demand Business', 'Near-shoring', 'Schattenökonomie', 'Pop-up Money', 'Fair Trade', 'Social Business', 'Postwachstumsökonomie', 'Womanomics', 'Rising Africa', 'Weltmacht China', 'Global Cities', 'Migration', ],
-    ['Individualisierung', 'Individualisierung.svg', 'i', 'Single-Gesellschaft', 'Lebensqualität', 'Selftracking', 'Identitätsmanagement', 'Me-Cloud', 'Small-World-Networks', 'Maker Movement', 'Diversity', 'Liquid Youth', 'Multigrafie', 'Tutorial Learning', 'Regenbogenfamilien', 'Wir-Kultur', ],
-    ['Gesundheit', 'Gesundheit.svg', 'g', 'Sportivity', 'Detoxing', 'Komplementärmedizin', 'Lebensqualität', 'Selftracking', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Work-Life-Blending', 'Corporate Health', 'Healthness', 'Foodies', 'Lebensenergie', 'Achtsamkeit', ],
-    ['New Work', 'New Work.svg', 'n', 'Work-Design', 'Outsourcing-Gesellschaft', 'Start-up-Culture', 'Slash-Slash-Biografien', 'Permanent Beta', 'Silver Potentials', 'Corporate Health', 'Work-Life Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Co-Working', 'Service-Ökonomie', 'Social Business', 'Kollaboration', 'Open Innovation', 'Talentismus', 'On-demand Business', 'Flexicurity', 'Antifragilität', 'Urban Manufacturing', 'Power of Place', 'Kreativökonomie', ],
-    ['Gender Shift', 'Gender Shift.svg', 't', 'Super Daddys', 'Alpha Softies', 'Sexdesign', 'Proll-Professionals', 'Work-Life-Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Tiger Woman', 'Regenbogenfamilien', 'Neue Mütter', 'Phasenfamilien', ],
-    ['Silver Society', 'Silver Society.svg', 'y', 'Downaging', 'Ageless Consuming', 'Forever Youngsters', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Diversity', 'Liquid Youth', 'Silver Potentials', 'Healthness', 'Universal Design', ],
-    ['Mobilität', 'Mobilitaet.svg', 'm', '24/7 Gesellschaft', 'Carsharing', 'Autonomes Fahren', 'Third Places', 'Power of Place', 'Wearables', 'Langsamverkehr', 'E-Mobility', 'Bike-Boom', 'Unterwegsmärkte', 'Mobile Commerce', 'Mixed Mobility', 'End-to-End-Tourismus', ],
-    ['Sicherheit', 'Sicherheit.svg', 's', 'Super-Safe-Society', 'Trust Technology', 'Transparenz-Märkte', 'E-Health', 'Identitätsmanagement', 'Digital Reputation', 'Predictive Analytics', 'Privacy', 'Cybercrime', 'Big Data', 'Industrie 4.0', 'Flexicurity', 'Antifragilität', 'Simplexity', ],
+    ['Wissenskultur', 'Wissenskultur.svg', 'w', 'elevator', 'Open Science', 'Informationsdesign', 'Bildungsbusiness', 'Massive Open Online Course', 'Gamification', 'Predictive Analytics', 'Talentismus', 'Open Innovation', 'Kollaboration', 'Sharing Economy', 'Female Shift', 'Life-Long-Learning', 'Tutorial Learning', 'Creativiteens', 'Neugiermanagement', ],
+    ['Konnektivität', 'Konnektivität.svg', 'k', 'elevator', 'Augmented Reality', 'E-Commerce', 'Crowd Funding', 'FinTech', 'Industrie 4.0', 'Big Data', 'Cybercrime', 'Privacy', 'Predictive Analytics', 'Selftracking', 'E-Health', 'Me-Cloud', 'Open Innovation', 'Pop-up Money', 'Swapping', 'Smart Devices', 'Internet der Dinge', 'Social Networks', ],
+    ['Urbanisierung', 'Urbanisierung.svg', 'u', 'java', 'Bevölkerungswachstum', 'Third Places', 'Collaborative Living', 'Urban Manufacturing', 'Urban Mining', 'Urban Farming', 'E-Mobility', 'Bike Boom', 'Megacities', 'Global Cities', 'Landflucht', 'Schrumpfende Städte', 'Smart Cities', ],
+    ['Neo-Ökologie', 'Neo-Oekologie.svg', 'ö', 'elevator', 'Nachhaltigkeitsgesellschaft', 'Post-Carbon-Gesellschaft', 'Bio-Boom', 'Gutbürger', 'Slow Culture', 'Maker Movement', 'Sharing Economy', 'Postwachstumsökonomie', 'Social Business', 'Fair Trade', 'Swapping', 'Zero Waste', 'Green Tech', 'Urban Farming', 'E-Mobility', 'Circular Economy', ],
+    ['Globalisierung', 'Globalisierung.svg', 'q', 'elevator', 'Glokalisierung', 'Multipolare Weltordnung', 'Cybercrime', 'On-demand Business', 'Near-shoring', 'Schattenökonomie', 'Pop-up Money', 'Fair Trade', 'Social Business', 'Postwachstumsökonomie', 'Womanomics', 'Rising Africa', 'Weltmacht China', 'Global Cities', 'Migration', ],
+    ['Individualisierung', 'Individualisierung.svg', 'i', 'elevator', 'Single-Gesellschaft', 'Lebensqualität', 'Selftracking', 'Identitätsmanagement', 'Me-Cloud', 'Small-World-Networks', 'Maker Movement', 'Diversity', 'Liquid Youth', 'Multigrafie', 'Tutorial Learning', 'Regenbogenfamilien', 'Wir-Kultur', ],
+    ['Gesundheit', 'Gesundheit.svg', 'g', 'spanish-flea', 'Sportivity', 'Detoxing', 'Komplementärmedizin', 'Lebensqualität', 'Selftracking', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Work-Life-Blending', 'Corporate Health', 'Healthness', 'Foodies', 'Lebensenergie', 'Achtsamkeit', ],
+    ['New Work', 'New Work.svg', 'n', 'elevator', 'Work-Design', 'Outsourcing-Gesellschaft', 'Start-up-Culture', 'Slash-Slash-Biografien', 'Permanent Beta', 'Silver Potentials', 'Corporate Health', 'Work-Life Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Co-Working', 'Service-Ökonomie', 'Social Business', 'Kollaboration', 'Open Innovation', 'Talentismus', 'On-demand Business', 'Flexicurity', 'Antifragilität', 'Urban Manufacturing', 'Power of Place', 'Kreativökonomie', ],
+    ['Gender Shift', 'Gender Shift.svg', 't', 'elevator', 'Super Daddys', 'Alpha Softies', 'Sexdesign', 'Proll-Professionals', 'Work-Life-Blending', 'Diversity', 'Female Shift', 'Womanomics', 'Tiger Woman', 'Regenbogenfamilien', 'Neue Mütter', 'Phasenfamilien', ],
+    ['Silver Society', 'Silver Society.svg', 'y', 'elevator', 'Downaging', 'Ageless Consuming', 'Forever Youngsters', 'E-Health', 'Ambient Assisted Living', 'Slow Culture', 'Diversity', 'Liquid Youth', 'Silver Potentials', 'Healthness', 'Universal Design', ],
+    ['Mobilität', 'Mobilitaet.svg', 'm', 'elevator', '24/7 Gesellschaft', 'Carsharing', 'Autonomes Fahren', 'Third Places', 'Power of Place', 'Wearables', 'Langsamverkehr', 'E-Mobility', 'Bike-Boom', 'Unterwegsmärkte', 'Mobile Commerce', 'Mixed Mobility', 'End-to-End-Tourismus', ],
+    ['Sicherheit', 'Sicherheit.svg', 's', 'elevator', 'Super-Safe-Society', 'Trust Technology', 'Transparenz-Märkte', 'E-Health', 'Identitätsmanagement', 'Digital Reputation', 'Predictive Analytics', 'Privacy', 'Cybercrime', 'Big Data', 'Industrie 4.0', 'Flexicurity', 'Antifragilität', 'Simplexity', ],
 ]
 var currentTrendNumber = -1;
 var trendHeadline = ""
 var trendItems = []
 var trendImage;
+var trendMusic;
 
 var trendNumbersArray = []
 var trendHeadlinesArray = []
@@ -330,6 +331,11 @@ $(document).ready(function() {
             $('#helpbox').toggleClass('helpbox-on helpbox-off');
         }
 
+        if (e.key === 'd') {
+            dynamicMusic = !dynamicMusic;
+            $('#symb-logo').toggleClass('normal inverted');
+        }
+
         if (e.key === 'x') {
             if (startable) {
                 showMaps();
@@ -348,13 +354,10 @@ $(document).ready(function() {
 
 
 function initSounds() {
-    stopSound = new sound("stop.mp3", false, 1);
-    bingSound = new sound("bing.mp3", false, 1);
-    startSound = new sound("start.wav", false, 1);
-    music1 = new sound("music2.mp3", true, 1);
-    music2 = new sound("music2_2.mp3", true, 1);
-    running1Sound = new sound("running1.mp3", true, 0.5);
-    winningSound = new sound("music_end.mp3", false, 1);
+    stopSound = new sound("Sounds/stop.mp3", false, 1);
+    bingSound = new sound("Sounds/bing.mp3", false, 1);
+    startSound = new sound("Sounds/start.wav", false, 1);
+    running1Sound = new sound("Sounds/running1.mp3", true, 0.5);
 }
 
 function playMusic() {
@@ -363,12 +366,12 @@ function playMusic() {
     } else {
         music2.play();
     }
-    m = !m;
+    //m = !m;
 }
 
 function stopMusic() {
     music1.stop();
-    music2.stop();
+    //music2.stop();
 }
 
 function showHelpbox() {
@@ -402,11 +405,29 @@ function selectTrend(trendNumber) {
         trendImage = trendItems[0];
         trendItems.shift();
         trendItems.shift();
+
+        trendMusic = trendItems[0];
+        trendItems.shift();
+
+        loadMusic();
+
         shuffle(trendItems);
 
         newSpin();
     }
 
+}
+
+var dynamicMusic = false;
+
+function loadMusic() {
+    if (dynamicMusic) {
+        music1 = new sound("Music/" + trendMusic + ".mp3", true, 0.7);
+        winningSound = new sound("Music/" + trendMusic + "_end.mp3", false, 0.7);
+    } else {
+        music1 = new sound("Music/elevator.mp3", true, 0.7);
+        winningSound = new sound("Music/elevator_end.mp3", false, 0.7);
+    }
 }
 
 function newSpin() {
@@ -448,7 +469,7 @@ function updateHeadline() {
 
 function sound(src, loop, volume) {
     this.sound = document.createElement("audio");
-    this.sound.src = "Sounds/" + src;
+    this.sound.src = src;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";

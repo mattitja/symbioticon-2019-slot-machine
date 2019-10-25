@@ -46,6 +46,14 @@
     background: url('Logos/Wissenskultur.svg') no-repeat -9999px -9999px;
 }
 
+.normal {
+    border: 0x solid grey;
+}
+
+.inverted {
+    border: 1px solid #444444;
+}
+
 body {
     margin: 0;
     padding: 0;
