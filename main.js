@@ -115,7 +115,7 @@ function createFrameSlots(ring) {
     i = 0;
     var slot = document.createElement('div');
 
-    slot.className = 'frameSlot';
+    slot.className = 'frameSlot frameSlotBorder' + ring;
 
     // compute and assign the transform for this slot
     var transform = 'rotateX(0deg) translateZ(' + REEL_RADIUS + 'px)';
@@ -125,7 +125,7 @@ function createFrameSlots(ring) {
     var content = $(slot).append('<p>' + "" + '</p>');
 
     // add the poster to the row
-    ring.append(slot);
+    $('#ring' + ring).append(slot);
 
 }
 
@@ -238,13 +238,16 @@ function stop() {
         stopRing(3);
         bingSound.stop();
         bingSound.play();
-        confetti1();
         playStopSounds();
     }, 1500)
 
     setTimeout(function() {
         running1Sound.stop();
     }, 1700)
+
+    setTimeout(function() {
+        confetti1();
+    }, 2000)
 
     setTimeout(function() {
         winningSound.play();
@@ -256,23 +259,25 @@ function stop() {
 
 function confetti1() {
     confetti({
-        particleCount: 30,
+        particleCount: 100,
         spread: 70,
         angle: 60,
+        ticks: 250,
         zIndex: 500,
         origin: {
             x: 0,
-            y: 0.5
+            y: 0
         }
     });
     confetti({
-        particleCount: 30,
+        particleCount: 100,
         spread: 70,
         angle: 120,
+        ticks: 250,
         zIndex: 500,
         origin: {
             x: 1,
-            y: 0.5
+            y: 0
         }
     });
 }
@@ -416,9 +421,9 @@ function updateUI() {
     createSlots(1);
     createSlots(2);
     createSlots(3);
-    createFrameSlots($('#ring4'));
-    createFrameSlots($('#ring5'));
-    createFrameSlots($('#ring6'));
+    createFrameSlots(4);
+    createFrameSlots(5);
+    createFrameSlots(6);
 
     updateHeadline();
 }

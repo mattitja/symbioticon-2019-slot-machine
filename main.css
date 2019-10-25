@@ -60,7 +60,8 @@ body {
     text-align: center;
     color: #fff;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 90px;
+    margin-bottom: 10px;
 }
 
 #symb-logo {
@@ -194,12 +195,23 @@ body {
     opacity: 0.9;
     /*color: rgba(0,0,0,0.9);*/
     /*background: #fff;*/
-    border: solid 2px #c4676a;
     z-index: 4;
-    border-radius: 3px;
+    border-radius: 5px;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
+}
+
+.frameSlotBorder4 {
+    border: solid 2px #DF785D;
+}
+
+.frameSlotBorder5 {
+    border: solid 2px #D15F68;
+}
+
+.frameSlotBorder6 {
+    border: solid 2px #C44971;
 }
 
 .backface-on {
