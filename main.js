@@ -263,23 +263,38 @@ function confetti1() {
         particleCount: 100,
         spread: 70,
         angle: 60,
-        ticks: 250,
+        ticks: 300,
         zIndex: 500,
         origin: {
             x: 0,
             y: 0
-        }
+        },
+        colors: ['#DF785D'],
     });
     confetti({
         particleCount: 100,
         spread: 70,
         angle: 120,
-        ticks: 250,
+        ticks: 300,
         zIndex: 500,
         origin: {
             x: 1,
             y: 0
-        }
+        },
+        colors: ['#C44971'],
+    });
+
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        angle: 90,
+        ticks: 300,
+        zIndex: 500,
+        origin: {
+            x: 0.5,
+            y: 0
+        },
+        colors: ['#e3b0a2'],
     });
 }
 
@@ -298,6 +313,14 @@ $(document).ready(function() {
 
     extractTrendNumbers();
     showHelpbox();
+
+    $(window).keydown(function(e) {
+        if (e.keyCode === 40) {
+            if (running && stopable) {
+                stop();
+            }
+        }
+    });
 
     // hook start button
     $(window).keypress(function(e) {
