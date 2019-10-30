@@ -342,6 +342,12 @@ $(document).ready(function() {
             console.log("ding: " + getRotationDegree(1));
         }
 
+        if (e.key === 'b') {
+            if (running && stopable) {
+                stop();
+            }
+        }
+
         if (e.key === 'p') {
             $('#stage').toggleClass('perspective-on perspective-off');
         }
